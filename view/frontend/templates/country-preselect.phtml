@@ -1,0 +1,15 @@
+<?php /* @var $block \Magento\Framework\View\Element\Template  */ ?>
+<?php
+/** @var $geoIp \Vendic\CountryPreselect\ViewModel\GeoIp */
+$geoIp = $block->getData('geo_ip');
+$userCountryCode = $geoIp->getVisitorCountyCode();
+?>
+<?php if(!empty($userCountryCode) && $userCountryCode != 'ZZ'): ?>
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "Vendic_CountryPreselect/js/country-preselect": {"userCountryCode": "<?= $userCountryCode ?>"}
+        }
+    }
+</script>
+<?php endif; ?>
